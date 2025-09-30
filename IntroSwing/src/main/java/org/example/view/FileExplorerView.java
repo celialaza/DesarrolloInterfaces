@@ -2,6 +2,7 @@ package org.example.view;
 import javax.swing.*;
 import java.awt.*;
 
+//La vista es responsable de crear y mostrar la ventana, pero no tiene lógica.
     public class FileExplorerView {
 
         public JFrame frame;
