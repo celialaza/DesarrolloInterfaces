@@ -6,6 +6,11 @@ import org.example.view.FileExplorerView;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
+//El controlador es el puente entre vista y modelo.
+//Hace dos cosas importantes:
+//1. Escucha cuando el usuario hace click en el botón "Buscar".
+//2. Pide al modelo los archivos y se los pasa a la vista
+
     public class FileExplorerController {
 
         private final FileExplorerView view;
@@ -19,10 +24,10 @@ import java.awt.event.ActionEvent;
 
         private void initController() {
             view.boton.addActionListener((ActionEvent e) -> {
-                String ruta = view.texto.getText();
-                var archivos = model.listarArchivos(ruta);
+                String ruta = view.texto.getText(); //Pide la ruta al campo de texto
+                var archivos = model.listarArchivos(ruta); //Llama al modelo para obtener archivos
                 view.modelo.clear();
-                view.modelo.addAll(archivos);
+                view.modelo.addAll(archivos); //Muestra los archivos en la lista
             });
 
             view.lista.addListSelectionListener(e -> {
