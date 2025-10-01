@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="org.example.Principal">
+  <grid id="27dc6" binding="raiz" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="empty">
+      <size top="20" left="20" bottom="20" right="20"/>
+    </border>
+    <children>
+      <component id="c72af" class="javax.swing.JList" binding="lista">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <model>
+            <item value="uno"/>
+            <item value="dos"/>
+            <item value="tres"/>
+          </model>
+          <selectionMode value="0"/>
+        </properties>
+      </component>
+      <grid id="b5ac4" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints border-constraint="South"/>
+        <properties/>
+        <border type="empty"/>
+        <children>
+          <component id="10ebf" class="javax.swing.JButton" binding="boton">
+            <constraints/>
+            <properties>
+              <margin top="10" left="10" bottom="10" right="10"/>
+              <text value="Button"/>
+            </properties>
+          </component>
+          <component id="58385" class="javax.swing.JTextField" binding="texto">
+            <constraints/>
+            <properties>
+              <columns value="10"/>
+              <margin top="2" left="9" bottom="2" right="6"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="da886" layout-manager="FlowLayout" hgap="20" vgap="20" flow-align="1">
+        <constraints border-constraint="North"/>
+        <properties>
+          <background color="-5331696"/>
+        </properties>
+        <border type="bevel-raised"/>
+        <children>
+          <component id="85ad9" class="javax.swing.JLabel">
+            <constraints/>
+            <properties>
+              <background color="-5331696"/>
+              <font name="Arial Black" size="24"/>
+              <horizontalAlignment value="0"/>
+              <opaque value="true"/>
+              <text value="Principal"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
