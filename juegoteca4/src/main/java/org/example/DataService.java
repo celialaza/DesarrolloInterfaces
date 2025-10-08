@@ -10,6 +10,9 @@ public interface DataService {
 
 
         public List<Juego> findAll();
+        boolean validarUsuario(String username, String password);
+        void agregarJuego(Juego juego);
+
 
     }
 

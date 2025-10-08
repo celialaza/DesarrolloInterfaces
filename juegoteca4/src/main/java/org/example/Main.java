@@ -19,12 +19,8 @@ public class Main {
                 Login loginDialog = new Login(ds);
                 loginDialog.setVisible(true);
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(
-                        null,
-                        "Error al iniciar la aplicación: " + e.getMessage(),
-                        "Error",
-                        JOptionPane.ERROR_MESSAGE
-                );
+                JOptionPane.showMessageDialog(null, "Error: "+e.getMessage());
+
                 e.printStackTrace();
                 System.exit(1);
             }

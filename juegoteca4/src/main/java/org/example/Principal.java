@@ -3,13 +3,16 @@ package org.example;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
-import java.lang.reflect.Array;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 public class Principal extends javax.swing.JFrame {
     private JTable table1;
     private JPanel panel1;
+    private JButton btnAñadir;
 
     private DataService dataservice;
     private ArrayList<Juego> juegos = new ArrayList<>();
@@ -28,6 +31,12 @@ public class Principal extends javax.swing.JFrame {
         modelo.addColumn("Nombre");
         modelo.addColumn("Descripcion");
         table1.setModel(modelo);
+
+        btnAñadir.setText("Añadir");
+
+        actualizarTabla();
+
+
 
         juegos = (ArrayList<Juego>) dataservice.findAll();
         juegos.forEach( (j)->{
@@ -50,6 +59,39 @@ public class Principal extends javax.swing.JFrame {
                 }
         );
 
+
+        btnAñadir.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JuegoNuevo juegoNuevo=new JuegoNuevo(dataservice);
+                juegoNuevo.setVisible(true);
+                //Actualizar la tabla después de cerrar el diálogo
+                juegoNuevo.addWindowListener(new WindowAdapter() {
+                    public void windowClosing(WindowEvent e) {
+                        SwingUtilities.invokeLater(() -> {
+                            try{
+                                actualizarTabla();
+                            }catch(Exception ex){
+                                ex.printStackTrace();
+
+                            }
+                        });
+
+                    }
+                });
+
+            }
+        });
+    }
+    private void actualizarTabla() {
+        DefaultTableModel modelo = (DefaultTableModel) table1.getModel();
+        modelo.setRowCount(0);//Limpiar la tabla
+        juegos=(ArrayList<Juego>) dataservice.findAll();
+        juegos.forEach((j)->{
+            var fila=new Object[]{ j.getId(), j.getNombre(),j.getDescripcion() };
+            modelo.addRow(fila);
+
+        });
     }
 
     public void start(){
